@@ -36,27 +36,23 @@ void setup() {
   wifiInit();
   IP_info();
   MAC = getMacAddress();
-
-
-  delay(2000);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
   //check if sensor is connected to the WiFi
   if (WiFi.status() == WL_CONNECTED) {
-    //wair for hub command
+    //wait for hub command
     /*
       if(1){
       //send out 3 test outputs
 
       }
     */
-    Serial.printf("Connected");
     digitalWrite(2, HIGH);
     delay(500);
     digitalWrite(2, LOW);
-    delay(5000);
+    delay(500);
   }
   else {
     Serial.printf("Not Connected");
@@ -64,7 +60,7 @@ void loop() {
     delay(3000);
     ESP.restart();
     WiFi.begin(PrefSSID.c_str(), PrefPassword.c_str());
-    
+/*    
     WFstatus = getWifiStatus(WFstatus);
     WiFi.begin(PrefSSID.c_str(), PrefPassword.c_str());
     WLcount = 0;
@@ -83,10 +79,8 @@ void loop() {
     if (getWifiStatus(WFstatus) == 3) {
 
     }
-    delay(1000);
+    delay(1000);*/
   }
-
-
 }
 
 //Supporting Function
@@ -121,7 +115,7 @@ String getMacAddress(void) {
 int32_t getRSSI(const char* target_ssid) {
   byte available_networks = WiFi.scanNetworks();
 
-  for (int network = 0; network < available_networks; network) {
+  for (int network = 0; network < available_networks; network++) {
     if (strcmp(WiFi.SSID(network).c_str(), target_ssid) == 0)
     {
       return WiFi.RSSI(network);
