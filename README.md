@@ -1,2 +1,2 @@
-# EE Senior Project App
-An app that is used as an interface between our data hub and each user.
+# EE Senior Project Firmware
+Firmware to be used in the a set of RTLS sensors and computing server.
